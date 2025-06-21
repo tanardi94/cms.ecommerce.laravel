@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('variants', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
-            $table->string('name');
-            $table->string('slug');
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('variant_group_id');
+            $table->foreign('variant_group_id')->references('id')->on('variant_groups')->onDelete('cascade');
+            $table->string('value');
+            $table->integer('stock');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -10,4 +10,9 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    resolve: {
+        alias: {
+            '~fontawesome': path.resolve(__dirname, 'node_modules/@fortawesome/fontawesome-free'),
+        },
+    },
 });

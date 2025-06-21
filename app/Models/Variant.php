@@ -8,4 +8,9 @@ class Variant extends BaseModel
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
+
+    public function group()
+    {
+        return $this->belongsTo(VariantGroup::class, 'variant_group_id');
+    }
 }

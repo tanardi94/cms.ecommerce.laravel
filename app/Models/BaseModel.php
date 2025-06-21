@@ -15,4 +15,8 @@ class BaseModel extends Model {
             $model->uuid = (string) \Illuminate\Support\Str::uuid();
         });
     }
+
+    public function getRouteKeyName() {
+        return 'uuid';
+    }
 }
