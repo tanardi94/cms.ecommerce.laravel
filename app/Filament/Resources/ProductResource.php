@@ -43,6 +43,12 @@ class ProductResource extends Resource
                     ->label('Category')
                     ->required()
                     ->options(Category::whereNotNull('parent_id')->pluck('name', 'id')),
+                Forms\Components\FileUpload::make('images')
+                    ->image()
+                    ->preserveFilenames()
+                    ->panelLayout('grid')
+                    ->reorderable()
+                    ->multiple(),
             ]);
     }
 
