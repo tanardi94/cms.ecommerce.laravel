@@ -17,7 +17,8 @@ class SubdistrictResource extends Resource
 {
     protected static ?string $model = Subdistrict::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'fas-map-location';
+    protected static?string $navigationGroup = 'Masters';
 
     public static function form(Form $form): Form
     {
