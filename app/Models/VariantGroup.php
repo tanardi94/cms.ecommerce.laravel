@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class VariantGroup extends BaseModel
+class VariantGroup extends BaseWithSlug
 {
 
 }

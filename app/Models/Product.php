@@ -2,16 +2,8 @@
 
 namespace App\Models;
 
-class Product extends BaseModel
+class Product extends BaseWithSlug
 {
-
-    protected static function boot()
-    {
-        parent::boot();
-        static::creating(function ($model) {
-            $model->slug = \Illuminate\Support\Str::slug($model->name);
-        });
-    }
 
     public function category()
     {

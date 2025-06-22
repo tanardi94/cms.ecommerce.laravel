@@ -19,18 +19,24 @@ class VariantResource extends Resource
 
     protected static ?string $navigationIcon = 'fas-tag';
 
+    protected static?string $navigationGroup = 'Products';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('sku')
-                    ->label('sku')
-                    ->options(\App\Models\Product::all()->pluck('product_sku', 'sku'))
-                    ->required(),
+                Forms\Components\TextInput::make('sku')
+                    ->label('SKU')
+                    ->required()
+                    ->maxLength(255),
                 Forms\Components\Select::make('variant_group_id')
                     ->label('type')
                     ->required()
                     ->options(\App\Models\VariantGroup::all()->pluck('name', 'id')),
+                Forms\Components\TextInput::make('price')
+                    ->required()
+                    ->numeric()
+                    ->prefix('Rp'),
                 Forms\Components\TextInput::make('value')
                     ->required()
                     ->maxLength(255),
@@ -47,6 +53,12 @@ class VariantResource extends Resource
                 Tables\Columns\TextColumn::make('product.name')
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('sku')
+                    ->label('SKU')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->money('IDR')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('group.name')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('value')

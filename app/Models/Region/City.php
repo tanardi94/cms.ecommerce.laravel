@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models\Region;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class City extends Model
+{
+    use HasFactory;
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->uuid = (string) \Illuminate\Support\Str::uuid();
+        });
+    }
+
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+
+    public function districts()
+    {
+        return $this->hasMany(District::class);
+    }
+}
